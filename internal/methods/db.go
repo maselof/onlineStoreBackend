@@ -5,13 +5,14 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
+	"math/rand"
 	"onlineStoreBackend/constants"
 )
 
 func GetDatabase() (db *gorm.DB, err error) {
 	db, err = gorm.Open("postgres",
 		"host="+constants.PostgresData.Host+
-			" port="+constants.PostgresData.Port+
+			" port="+constants.PostgresData.Port[rand.Intn(2)]+
 			" user="+constants.PostgresData.User+
 			" dbname="+constants.PostgresData.DBName+
 			" password="+constants.PostgresData.Password+

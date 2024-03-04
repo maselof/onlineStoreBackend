@@ -2,7 +2,7 @@ package constants
 
 type Postgres struct {
 	Host     string
-	Port     string
+	Port     []string
 	User     string
 	DBName   string
 	Password string
@@ -11,7 +11,7 @@ type Postgres struct {
 
 var PostgresData = Postgres{
 	Host:     "localhost",
-	Port:     "5433",
+	Port:     []string{"5433", ""},
 	User:     "postgres",
 	DBName:   "online_store",
 	Password: "postgres",
