@@ -11,7 +11,7 @@ type Postgres struct {
 
 var PostgresData = Postgres{
 	Host:     "localhost",
-	Port:     []string{"5433", ""},
+	Port:     []string{"5433"},
 	User:     "postgres",
 	DBName:   "online_store",
 	Password: "postgres",
