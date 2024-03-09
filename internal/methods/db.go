@@ -16,7 +16,8 @@ func GetDatabase() (db *gorm.DB, err error) {
 			" port="+constants.PostgresData.Port[rand.Intn(2)]+
 			" user="+constants.PostgresData.User+
 			" dbname="+constants.PostgresData.DBName+
-			" password="+constants.PostgresData.Password)
+			" password="+constants.PostgresData.Password+
+			" disable="+constants.PostgresData.SSLMode)
 	return db, err
 }
 

@@ -6,6 +6,7 @@ type Postgres struct {
 	User     string
 	DBName   string
 	Password string
+	SSLMode  string
 }
 
 var PostgresData = Postgres{
@@ -14,4 +15,5 @@ var PostgresData = Postgres{
 	User:     "asafronov",
 	DBName:   "online_store",
 	Password: "",
+	SSLMode:  "disable",
 }
