@@ -43,7 +43,7 @@ func (s UserControllers) PostUser(c *gin.Context) {
 		resp.SendResponse(c, response.JSONResponse{
 			Code:    http.StatusInternalServerError,
 			Message: "Internal DB",
-			Data:    err,
+			Data:    err.Error(),
 		})
 
 		return
