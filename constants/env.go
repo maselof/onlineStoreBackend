@@ -15,5 +15,5 @@ var PostgresData = Postgres{
 	User:     "asafronov",
 	DBName:   "online_store",
 	Password: "",
-	SSLMode:  "disable",
+	SSLMode:  "require",
 }
