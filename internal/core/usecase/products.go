@@ -19,7 +19,6 @@ func (s ProductsService) PostProduct(request request.ProductRequest) (result res
 	if err != nil {
 		return result, err
 	}
-	defer tx.Close()
 
 	data, err := s.repoProducts.PostProduct(tx, request)
 
@@ -36,7 +35,6 @@ func (s ProductsService) GetAllProducts() (result []response.ProductsResponse, e
 	if err != nil {
 		return result, err
 	}
-	defer tx.Close()
 
 	data, err := s.repoProducts.GetAllProducts(tx)
 	if err != nil {

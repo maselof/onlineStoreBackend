@@ -16,7 +16,6 @@ func (s OrdersService) PostOrder(userID int, productsID []int) (result []respons
 	if err != nil {
 		return result, err
 	}
-	defer tx.Close()
 
 	order, err := s.repoOrders.CreateOrder(tx, userID)
 	if err != nil {
@@ -38,7 +37,6 @@ func (s OrdersService) GetOrdersByUserID(userID int) (result []response.OrdersRe
 	if err != nil {
 		return result, err
 	}
-	defer tx.Close()
 
 	return s.repoOrders.GetOrdersByUserID(tx, userID)
 }

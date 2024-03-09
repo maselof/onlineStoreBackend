@@ -3,21 +3,26 @@ package methods
 import (
 	"context"
 	"github.com/go-redis/redis/v8"
-	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 	"log"
 	"math/rand"
 	"onlineStoreBackend/constants"
 )
 
 func GetDatabase() (db *gorm.DB, err error) {
-	db, err = gorm.Open("postgres",
-		"host="+constants.PostgresData.Host+
-			" port="+constants.PostgresData.Port[rand.Intn(2)]+
-			" user="+constants.PostgresData.User+
-			" dbname="+constants.PostgresData.DBName+
-			" password="+constants.PostgresData.Password+
-			" sslmode="+constants.PostgresData.SSLMode)
+	dsn := "host=" + constants.PostgresData.Host +
+		" port=" + constants.PostgresData.Port[rand.Intn(2)] +
+		" user=" + constants.PostgresData.User +
+		" dbname=" + constants.PostgresData.DBName +
+		" password=" + constants.PostgresData.Password +
+		" sslmode=" + constants.PostgresData.SSLMode
+
+	db, err = gorm.Open(postgres.New(postgres.Config{
+		DSN: dsn,
+	}), &gorm.Config{})
+
 	return db, err
 }
 

@@ -16,7 +16,6 @@ func (s UsersService) PostUser(requestUser request.UserRequest) (result response
 	if err != nil {
 		return result, err
 	}
-	defer tx.Close()
 
 	return s.repoUsers.PostUser(tx, requestUser.Name)
 }
@@ -26,7 +25,6 @@ func (s UsersService) DeleteUser(id int) (result response.UsersResponse, err err
 	if err != nil {
 		return result, err
 	}
-	defer tx.Close()
 
 	return s.repoUsers.DeleteUser(tx, id)
 }
@@ -36,7 +34,6 @@ func (s UsersService) GetUsers() (result []response.UsersResponse, err error) {
 	if err != nil {
 		return result, err
 	}
-	defer tx.Close()
 
 	return s.repoUsers.GetUsers(tx)
 }

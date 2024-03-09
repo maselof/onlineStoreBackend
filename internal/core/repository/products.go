@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/Masterminds/squirrel"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 	"onlineStoreBackend/entity/dbmodel"
 	"onlineStoreBackend/entity/request"
 )
