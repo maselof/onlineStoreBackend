@@ -25,7 +25,7 @@ func (s ProductsService) PostProduct(request request.ProductRequest) (result res
 	result.ID = data.ID
 	result.Name = data.Name
 
-	data.Price = strings.Replace(data.Price, "$", "", -1)
+	data.Price = strings.Replace(data.Price, "₽", "", -1)
 	result.Price, err = strconv.ParseFloat(data.Price, 64)
 	return
 }
@@ -47,7 +47,7 @@ func (s ProductsService) GetAllProducts() (result []response.ProductsResponse, e
 		result[ind].ID = val.ID
 		result[ind].Name = val.Name
 
-		val.Price = strings.Replace(val.Price, "$", "", -1)
+		val.Price = strings.Replace(val.Price, "₽", "", -1)
 
 		result[ind].Price, err = strconv.ParseFloat(val.Price, 64)
 		if err != nil {
@@ -75,7 +75,7 @@ func (s ProductsService) GetProductsByIds(ids []int) (result []response.Products
 		result[ind].ID = val.ID
 		result[ind].Name = val.Name
 
-		val.Price = strings.Replace(val.Price, "$", "", -1)
+		val.Price = strings.Replace(val.Price, "₽", "", -1)
 
 		result[ind].Price, err = strconv.ParseFloat(val.Price, 64)
 		if err != nil {
@@ -105,7 +105,7 @@ func (s ProductsService) DeleteProductByID(id int) (result response.ProductsResp
 	result.ID = data.ID
 	result.Name = data.Name
 
-	data.Price = strings.Replace(data.Price, "$", "", -1)
+	data.Price = strings.Replace(data.Price, "₽", "", -1)
 	result.Price, err = strconv.ParseFloat(data.Price, 64)
 	if err != nil {
 		return result, err
