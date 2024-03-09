@@ -5,6 +5,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
+	"log"
 	"math/rand"
 	"onlineStoreBackend/constants"
 )
@@ -27,10 +28,12 @@ func GetRedis(ctx context.Context) (client *redis.Client, err error) {
 		DB:       0,
 	})
 
-	_, err = client.Ping(ctx).Result()
+	result, err := client.Ping(ctx).Result()
 	if err != nil {
 		return client, err
 	}
+
+	log.Print(result)
 
 	return client, err
 }
