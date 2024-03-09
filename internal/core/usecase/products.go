@@ -26,6 +26,9 @@ func (s ProductsService) PostProduct(request request.ProductRequest) (result res
 	result.Name = data.Name
 
 	data.Price = strings.Replace(data.Price, "₽", "", -1)
+	data.Price = strings.Replace(data.Price, ",", ".", -1)
+	data.Price = strings.Replace(data.Price, " ", "", -1)
+
 	result.Price, err = strconv.ParseFloat(data.Price, 64)
 	return
 }
