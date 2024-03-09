@@ -22,8 +22,9 @@ func GetDatabase() (db *gorm.DB, err error) {
 
 func GetRedis(ctx context.Context) (client *redis.Client, err error) {
 	client = redis.NewClient(&redis.Options{
-		Addr: "localhost:6379",
-		DB:   0,
+		Addr:     "localhost:6379",
+		Password: "",
+		DB:       0,
 	})
 
 	_, err = client.Ping(ctx).Result()
