@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
@@ -41,7 +40,6 @@ func (s CartsController) PostProductsByUserID(c *gin.Context) {
 	}
 
 	err = s.cartsService.PostProducts(c, requestCast)
-	fmt.Print(err)
 	if err != nil {
 		resp.SendResponse(c, response.JSONResponse{
 			Code:    http.StatusInternalServerError,
