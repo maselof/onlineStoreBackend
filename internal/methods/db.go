@@ -6,12 +6,13 @@ import (
 	_ "github.com/lib/pq"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"math/rand"
 	"onlineStoreBackend/constants"
 )
 
 func GetDatabase() (db *gorm.DB, err error) {
 	dsn := "host=" + constants.PostgresData.Host +
-		" port=" + constants.PostgresData.Port[0] +
+		" port=" + constants.PostgresData.Port[rand.Intn(2)] +
 		" user=" + constants.PostgresData.User +
 		" dbname=" + constants.PostgresData.DBName +
 		" password=" + constants.PostgresData.Password +
