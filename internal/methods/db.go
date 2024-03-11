@@ -6,7 +6,6 @@ import (
 	_ "github.com/lib/pq"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 	"math/rand"
 	"onlineStoreBackend/constants"
 )
@@ -33,12 +32,10 @@ func GetRedis(ctx context.Context) (client *redis.Client, err error) {
 		DB:       0,
 	})
 
-	result, err := client.Ping(ctx).Result()
+	_, err = client.Ping(ctx).Result()
 	if err != nil {
 		return client, err
 	}
-
-	log.Print(result)
 
 	return client, err
 }

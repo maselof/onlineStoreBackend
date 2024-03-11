@@ -20,6 +20,7 @@ func (s CartsService) PostProducts(ctx context.Context, request request.CastRequ
 	if err != nil {
 		return err
 	}
+	defer client.Close()
 
 	tx, err := methods.GetDatabase()
 	if err != nil {
@@ -67,6 +68,7 @@ func (s CartsService) DeleteCart(ctx context.Context, userID int) (err error) {
 	if err != nil {
 		return err
 	}
+	defer client.Close()
 
 	return s.repoCarts.DeleteCart(ctx, client, userID)
 }
@@ -76,6 +78,7 @@ func (s CartsService) GetProductsFromCart(ctx context.Context, userID int) (ids 
 	if err != nil {
 		return ids, err
 	}
+	defer client.Close()
 
 	data, err := s.repoCarts.GetProductsFromCart(ctx, client, userID)
 	if err != nil {
